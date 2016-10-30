@@ -9,15 +9,14 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
-      a.navbar-brand href="/"  Map Merge
-      ul.nav.navbar-nav
-        li.nav-item.active
-          a.nav-link href="/"
-            | Home
-            span.sr-only (current)
+    = render 'layouts/nav'
 
     .container
+      = content_tag(:div, flash[:notice].html_safe,  class: "alert alert-info")    if flash[:notice].present?
+      = content_tag(:div, flash[:success].html_safe, class: "alert alert-success") if flash[:success].present?
+      = content_tag(:div, flash[:warning].html_safe, class: "alert alert-warning") if flash[:warning].present?
+      = content_tag(:div, flash[:error].html_safe,   class: "alert alert-danger")  if flash[:error].present?
+
       = yield
 
       footer Copyright © 2016 frsnic.

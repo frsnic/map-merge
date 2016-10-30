@@ -1,0 +1,32 @@
+nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
+  a.navbar-brand href="/"  Map Merge
+
+  ul.nav.navbar-nav
+    li.nav-item.active
+      a.nav-link href="/"
+        | 首頁
+        span.sr-only (current)
+    - if current_user
+      li.nav-item
+        a.nav-link href="/admin"
+          | 後台
+          span.sr-only (current)
+
+  ul.nav.navbar-nav.float-xs-right
+    - unless current_user
+      li.nav-item
+        = link_to sign_up_path, class: 'nav-link' do
+          i.fa.fa-user aria-hidden="true"
+          | Sign Up
+      li.nav-item
+        = link_to sign_in_path, class: 'nav-link' do
+          i.fa.fa-sign-in aria-hidden="true"
+          | Login
+    - else
+      li.nav-item
+        = link_to root_path, class: 'nav-link user-email' do
+          = "Hi, #{current_user.email}"
+      li.nav-item
+        = link_to destroy_user_session_path, class: 'nav-link', data: { method: "delete" } do
+          i.fa.fa-sign-out aria-hidden="true"
+          | Sign Out

@@ -56,3 +56,5 @@ gem 'devise'
 gem 'slim-rails'
 
 gem 'bootstrap'
+
+gem 'font-awesome-rails'
