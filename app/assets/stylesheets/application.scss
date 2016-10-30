@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+
+body {
+  padding-top: 5rem;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+}
+
+.table .actions a {
+  margin-right: 1em;
+}

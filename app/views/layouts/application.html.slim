@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title MapMerge
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
+      a.navbar-brand href="/"  Map Merge
+      ul.nav.navbar-nav
+        li.nav-item.active
+          a.nav-link href="/"
+            | Home
+            span.sr-only (current)
+
+    .container
+      = yield
+
+      footer Copyright © 2016 frsnic.
