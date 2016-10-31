@@ -1,4 +1,4 @@
-= form_for [@map, @upload_map] do |f|
+= simple_form_for [@map, @upload_map] do |f|
   - if @upload_map.errors.any?
     #error_explanation
       h2 = "#{pluralize(@upload_map.errors.count, "error")} prohibited this upload_map from being saved:"
@@ -6,11 +6,7 @@
         - @upload_map.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.hidden_field :map_id
-  .field
-    = f.hidden_field :user_id
-  .field
-    = f.label :file
-    = f.file_field :file
-  .actions = f.submit
+  .field   = f.input :map_id,  as: :hidden
+  .field   = f.input :user_id, as: :hidden
+  .field   = f.input :file,    as: :file
+  .actions = f.submit "上傳"

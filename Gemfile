@@ -64,3 +64,5 @@ gem 'font-awesome-rails'
 gem 'cancancan'
 
 gem 'carrierwave'
+
+gem 'simple_form'

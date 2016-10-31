@@ -10,7 +10,7 @@
     tbody
       - @maps.each do |map|
         tr
-          td = map.title
+          td = link_to map.title, map_path(map)
           td.actions
             = link_to '上傳', new_map_upload_map_path(map)
             = link_to '編輯', edit_map_path(map)
