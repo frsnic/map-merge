@@ -1,0 +1,14 @@
+.table-responsive
+  table.table.table-striped
+    thead
+      tr
+        th 地圖名稱
+        th colspan="3" Actions
+    tbody
+      - @maps.each do |map|
+        tr
+          td = map.title
+          td.actions
+            = link_to 'KML', front_map_dots_path(map, format: :kml)
+            / = link_to 'CSV', front_map_dots_path(map, format: :csv)
+            = link_to 'URL', front_map_dots_url(map, format: :kml), id: 'copy'

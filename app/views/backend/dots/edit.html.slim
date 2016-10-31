@@ -1,0 +1,9 @@
+h1 Editing dot
+
+= render 'form'
+
+.actions.top-buffer.bottom-buffer
+  hr
+  = link_to 'Show', map_dot_path(@map, @dot)
+  = link_to 'Back', map_dots_path
+

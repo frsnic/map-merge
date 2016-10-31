@@ -1,0 +1,17 @@
+p
+  strong Map:
+  = @dot.map.title
+p
+  strong User:
+  = @dot.user.nickname
+p
+  strong Name:
+  = @dot.name
+p
+  strong Location:
+  = "(#{@dot.x}, #{@dot.y})"
+
+.actions.top-buffer.bottom-buffer
+  hr
+  = link_to 'Edit', edit_map_dot_path(@map, @dot)
+  = link_to 'Back', map_dots_path

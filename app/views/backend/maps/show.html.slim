@@ -1,0 +1,15 @@
+p
+  strong Title:
+  = @map.title
+p
+  strong User:
+  = @map.user_id
+
+ul
+  - @map.dots.each do |dot|
+    li = "#{dot.name} (#{dot.x}, #{dot.y})"
+
+.actions.top-buffer
+  hr
+  = link_to 'Edit', edit_map_path(@map)
+  = link_to 'Back', maps_path

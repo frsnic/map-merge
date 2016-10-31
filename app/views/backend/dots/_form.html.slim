@@ -1,0 +1,12 @@
+= simple_form_for [@map, @dot] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :map_id, as: :hidden
+    = f.input :user_id, as: :hidden
+    = f.input :name
+    = f.input :x
+    = f.input :y
+
+  .form-actions
+    = f.button :submit

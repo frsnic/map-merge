@@ -1,0 +1,27 @@
+h1 Listing dots
+
+.table-responsive.top-buffer
+  table.table.table-striped
+    thead
+      tr
+        th Map
+        th User
+        th Name
+        th Location
+        th Actions
+
+    tbody
+      - @dots.each do |dot|
+        tr
+          td = dot.map.title
+          td = dot.user.nickname
+          td = dot.name
+          td = "(#{dot.x}, #{dot.y})"
+          td.actions
+            = link_to 'Show', map_dot_path(@map, dot)
+            = link_to 'Edit', edit_map_dot_path(@map, dot)
+            = link_to 'Destroy', map_dot_path(@map, dot), data: { confirm: 'Are you sure?' }, method: :delete
+
+.top-buffer.bottom-buffer
+  hr
+  = link_to 'New Dot', new_map_dot_path

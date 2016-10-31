@@ -1,0 +1,16 @@
+= link_to new_map_path do
+  .btn.btn-small.btn-success 新增
+
+.table-responsive.top-buffer
+  table.table.table-striped
+    thead
+      tr
+        th 地圖名稱
+        th colspan="3" Actions
+    tbody
+      - @maps.each do |map|
+        tr
+          td = link_to map.title, map_path(map)
+          td.actions
+            = link_to '上傳', new_map_upload_map_path(map)
+            = link_to '編輯', edit_map_path(map)
