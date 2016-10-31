@@ -23,7 +23,7 @@ copyToClipboard = (text) ->
       document.body.removeChild textarea
   return
 
-$ ->
+ready = ->
   document.querySelector('#copy').onclick = (e) ->
     e.preventDefault()
     result = copyToClipboard $(this).attr('href')
@@ -32,3 +32,6 @@ $ ->
     else
       alert('複製失敗')
     return
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

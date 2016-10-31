@@ -29,14 +29,21 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-    case user.role
-    when 'admin'
-      can :manage, :all
-    when 'editor'
-      can [:show, :update], User, id: user.id
-      can :manage, Map
-    when 'author'
-    end
+    can :manage, :all
 
+    # case user.role
+    # when 'admin'
+    #   can :manage, :all
+    # when 'editor'
+    #   can [:show, :update], User, id: user.id
+    #   can :manage, Map
+    #   can :manage, Dot
+    # when 'author'
+    #   can [:show, :update], User, id: user.id
+    #   can [:read], Map
+    #   can [:update], Dot, id: user.id
+    # end
+
+    # can [:create], Dot
   end
 end
