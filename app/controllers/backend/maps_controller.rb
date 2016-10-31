@@ -1,5 +1,4 @@
-class Backend::MapsController < ApplicationController
-  before_action :authenticate_user!
+class Backend::MapsController < Backend::ApplicationController
   before_action :set_map, only: [:show, :edit, :update, :destroy]
 
   # GET /maps
@@ -15,7 +14,7 @@ class Backend::MapsController < ApplicationController
 
   # GET /maps/new
   def new
-    @map = Map.new
+    @map = current_user.maps.new
   end
 
   # GET /maps/1/edit
@@ -70,7 +69,7 @@ class Backend::MapsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def map_params
-      params.require(:map).permit(:name, :user_id)
+      params.require(:map).permit(:title, :user_id)
     end
 
 end

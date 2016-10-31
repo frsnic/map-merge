@@ -60,3 +60,5 @@ gem 'slim-rails'
 gem 'bootstrap'
 
 gem 'font-awesome-rails'
+
+gem 'cancancan'

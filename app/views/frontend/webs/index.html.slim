@@ -7,7 +7,7 @@
     tbody
       - @maps.each do |map|
         tr
-          td = map.name
+          td = map.title
           td.actions
             = link_to 'KML', '/'
             = link_to 'CSV', '/'

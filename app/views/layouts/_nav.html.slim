@@ -25,7 +25,7 @@ nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
     - else
       li.nav-item
         = link_to root_path, class: 'nav-link user-email' do
-          = "Hi, #{current_user.email}"
+          = "Hi, #{current_user.nickname}"
       li.nav-item
         = link_to destroy_user_session_path, class: 'nav-link', data: { method: "delete" } do
           i.fa.fa-sign-out aria-hidden="true"
