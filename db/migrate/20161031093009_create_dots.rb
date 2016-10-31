@@ -4,8 +4,8 @@ class CreateDots < ActiveRecord::Migration[5.0]
       t.integer :map_id
       t.integer :user_id
       t.string  :name
-      t.float   :x
-      t.float   :y
+      t.string  :x
+      t.string  :y
 
       t.timestamps
     end

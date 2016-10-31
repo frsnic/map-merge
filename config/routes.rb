@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   scope module: :frontend do
     root to: 'webs#index'
+
+    get '/maps/:map_id/dots', to: 'webs#dots', as: :front_map_dots
   end
 
   scope "/admin", module: :backend do

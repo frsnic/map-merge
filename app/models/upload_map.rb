@@ -53,9 +53,7 @@ class UploadMap < ApplicationRecord
     end
 
     def grub_dots(hash)
-      case hash['Point'].length
-      when 0
-        []
+      case [hash].flatten.length
       when 1
         [ hash ]
       else

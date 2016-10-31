@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 20161031093009) do
     t.integer  "map_id"
     t.integer  "user_id"
     t.string   "name"
-    t.float    "x",          limit: 24
-    t.float    "y",          limit: 24
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "x"
+    t.string   "y"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["map_id"], name: "index_dots_on_map_id", using: :btree
     t.index ["user_id"], name: "index_dots_on_user_id", using: :btree
   end
