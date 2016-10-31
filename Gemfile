@@ -62,3 +62,5 @@ gem 'bootstrap'
 gem 'font-awesome-rails'
 
 gem 'cancancan'
+
+gem 'carrierwave'

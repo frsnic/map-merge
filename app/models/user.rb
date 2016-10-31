@@ -8,7 +8,9 @@ class User < ApplicationRecord
 
   # security (i.e. attr_accessible) ...........................................
   # relationships .............................................................
-  has_many :maps, dependent: :destroy
+  has_many :maps
+
+  has_many :upload_maps, dependent: :destroy
 
   # validations ...............................................................
   validates_presence_of :nickname

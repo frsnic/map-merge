@@ -27,3 +27,4 @@ config/database.yml
 config/initializers/session_store.rb
 config/initializers/rollbar.rb
 public/files/*
+public/uploads/*

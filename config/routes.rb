@@ -19,8 +19,9 @@ Rails.application.routes.draw do
   scope "/admin", module: :backend do
     get '/', to: 'maps#index'
 
-    resources :maps
-    resources :users
+    resources :maps do
+      resources :upload_maps, only: [:new, :create]
+    end
   end
 
 end
