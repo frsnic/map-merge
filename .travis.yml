@@ -9,4 +9,5 @@ script:
   - bundle exec rake
 before_script:
   - cp config/database.travis.yml config/database.yml
+  - cp config/initializers/session_store.travis.rb config/initializers/session_store.rb
   - mysql -e 'create database map_merge_test'
