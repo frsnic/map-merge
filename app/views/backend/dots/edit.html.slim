@@ -1,8 +1,9 @@
-h1 Editing backend_dot
+h1 Editing dot
 
-== render 'form'
+= render 'form'
 
-= link_to 'Show', @backend_dot
-'|
-= link_to 'Back', backend_dots_path
+.actions.top-buffer.bottom-buffer
+  hr
+  = link_to 'Show', map_dot_path(@map, @dot)
+  = link_to 'Back', map_dots_path
 

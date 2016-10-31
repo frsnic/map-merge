@@ -1,29 +1,27 @@
-h1 Listing backend_dots
+h1 Listing dots
 
-table
-  thead
-    tr
-      th Map
-      th User
-      th Name
-      th X
-      th Y
-      th
-      th
-      th
-
-  tbody
-    - @backend_dots.each do |backend_dot|
+.table-responsive.top-buffer
+  table.table.table-striped
+    thead
       tr
-        td = backend_dot.map_id
-        td = backend_dot.user_id
-        td = backend_dot.name
-        td = backend_dot.x
-        td = backend_dot.y
-        td = link_to 'Show', backend_dot
-        td = link_to 'Edit', edit_backend_dot_path(backend_dot)
-        td = link_to 'Destroy', backend_dot, data: { confirm: 'Are you sure?' }, method: :delete
+        th Map
+        th User
+        th Name
+        th Location
+        th Actions
 
-br
+    tbody
+      - @dots.each do |dot|
+        tr
+          td = dot.map.title
+          td = dot.user.nickname
+          td = dot.name
+          td = "(#{dot.x}, #{dot.y})"
+          td.actions
+            = link_to 'Show', map_dot_path(@map, dot)
+            = link_to 'Edit', edit_map_dot_path(@map, dot)
+            = link_to 'Destroy', map_dot_path(@map, dot), data: { confirm: 'Are you sure?' }, method: :delete
 
-= link_to 'New Dot', new_backend_dot_path
+.top-buffer.bottom-buffer
+  hr
+  = link_to 'New Dot', new_map_dot_path

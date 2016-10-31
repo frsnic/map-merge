@@ -1,21 +1,17 @@
-p#notice = notice
-
 p
   strong Map:
-  = @backend_dot.map_id
+  = @dot.map.title
 p
   strong User:
-  = @backend_dot.user_id
+  = @dot.user.nickname
 p
   strong Name:
-  = @backend_dot.name
+  = @dot.name
 p
-  strong X:
-  = @backend_dot.x
-p
-  strong Y:
-  = @backend_dot.y
+  strong Location:
+  = "(#{@dot.x}, #{@dot.y})"
 
-= link_to 'Edit', edit_backend_dot_path(@backend_dot)
-'|
-= link_to 'Back', backend_dots_path
+.actions.top-buffer.bottom-buffer
+  hr
+  = link_to 'Edit', edit_map_dot_path(@map, @dot)
+  = link_to 'Back', map_dots_path

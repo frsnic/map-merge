@@ -5,6 +5,8 @@ class Dot < ApplicationRecord
   # relationships .............................................................
   belongs_to :map
 
+  belongs_to :user
+
   # validations ...............................................................
   validates_presence_of :user_id, :map_id, :x, :y
 

@@ -1,5 +1,5 @@
 class Backend::UploadMapsController < Backend::ApplicationController
-  before_action :find_map
+  before_action :set_map
 
   # GET /upload_maps/new
   def new
@@ -23,12 +23,12 @@ class Backend::UploadMapsController < Backend::ApplicationController
   end
 
   private
+    def set_map
+      @map = Map.find(params[:map_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def upload_map_params
       params.require(:upload_map).permit(:map_id, :user_id, :name, :file, :size, :content_type)
-    end
-
-    def find_map
-      @map = Map.find(params[:map_id])
     end
 end

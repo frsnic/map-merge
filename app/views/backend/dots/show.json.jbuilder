@@ -1,1 +1,1 @@
-json.partial! "backend_dots/backend_dot", backend_dot: @backend_dot
+json.partial! "dots/dot", dot: @dot

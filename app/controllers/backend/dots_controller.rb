@@ -1,10 +1,11 @@
 class Backend::DotsController < Backend::ApplicationController
-  before_action :set_backend_dot, only: [:show, :edit, :update, :destroy]
+  before_action :set_map
+  before_action :set_dot, only: [:show, :edit, :update, :destroy]
 
   # GET /backend/dots
   # GET /backend/dots.json
   def index
-    @backend_dots = Backend::Dot.all
+    @dots = @map.dots.includes(:user, :map).all
   end
 
   # GET /backend/dots/1
@@ -14,7 +15,7 @@ class Backend::DotsController < Backend::ApplicationController
 
   # GET /backend/dots/new
   def new
-    @backend_dot = Backend::Dot.new
+    @dot = @map.dots.new
   end
 
   # GET /backend/dots/1/edit
@@ -24,15 +25,15 @@ class Backend::DotsController < Backend::ApplicationController
   # POST /backend/dots
   # POST /backend/dots.json
   def create
-    @backend_dot = Backend::Dot.new(backend_dot_params)
+    @dot = @map.dots.new(dot_params)
 
     respond_to do |format|
-      if @backend_dot.save
-        format.html { redirect_to @backend_dot, notice: 'Dot was successfully created.' }
-        format.json { render :show, status: :created, location: @backend_dot }
+      if @dot.save
+        format.html { redirect_to @dot, notice: 'Dot was successfully created.' }
+        format.json { render :show, status: :created, location: @dot }
       else
         format.html { render :new }
-        format.json { render json: @backend_dot.errors, status: :unprocessable_entity }
+        format.json { render json: @dot.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,12 +42,12 @@ class Backend::DotsController < Backend::ApplicationController
   # PATCH/PUT /backend/dots/1.json
   def update
     respond_to do |format|
-      if @backend_dot.update(backend_dot_params)
-        format.html { redirect_to @backend_dot, notice: 'Dot was successfully updated.' }
-        format.json { render :show, status: :ok, location: @backend_dot }
+      if @dot.update(dot_params)
+        format.html { redirect_to @dot, notice: 'Dot was successfully updated.' }
+        format.json { render :show, status: :ok, location: @dot }
       else
         format.html { render :edit }
-        format.json { render json: @backend_dot.errors, status: :unprocessable_entity }
+        format.json { render json: @dot.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,21 +55,25 @@ class Backend::DotsController < Backend::ApplicationController
   # DELETE /backend/dots/1
   # DELETE /backend/dots/1.json
   def destroy
-    @backend_dot.destroy
+    @dot.destroy
     respond_to do |format|
-      format.html { redirect_to backend_dots_url, notice: 'Dot was successfully destroyed.' }
+      format.html { redirect_to dots_url, notice: 'Dot was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+    def set_map
+      @map = Map.find(params[:map_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
-    def set_backend_dot
-      @backend_dot = Backend::Dot.find(params[:id])
+    def set_dot
+      @dot = @map.dots.includes(:user, :map).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def backend_dot_params
-      params.require(:backend_dot).permit(:map_id, :user_id, :name, :x, :y)
+    def dot_params
+      params.require(:dot).permit(:map_id, :user_id, :name, :x, :y)
     end
 end

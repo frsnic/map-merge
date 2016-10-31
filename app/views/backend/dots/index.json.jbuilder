@@ -1,1 +1,1 @@
-json.array! @backend_dots, partial: 'backend_dots/backend_dot', as: :backend_dot
+json.array! @dots, partial: 'backend/dots/dot', as: :dot
