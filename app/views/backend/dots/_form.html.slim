@@ -1,0 +1,12 @@
+= simple_form_for(@backend_dot) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :map_id
+    = f.input :user_id
+    = f.input :name
+    = f.input :x
+    = f.input :y
+
+  .form-actions
+    = f.button :submit

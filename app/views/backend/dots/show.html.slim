@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Map:
+  = @backend_dot.map_id
+p
+  strong User:
+  = @backend_dot.user_id
+p
+  strong Name:
+  = @backend_dot.name
+p
+  strong X:
+  = @backend_dot.x
+p
+  strong Y:
+  = @backend_dot.y
+
+= link_to 'Edit', edit_backend_dot_path(@backend_dot)
+'|
+= link_to 'Back', backend_dots_path

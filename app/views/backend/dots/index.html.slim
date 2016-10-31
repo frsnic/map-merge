@@ -1,0 +1,29 @@
+h1 Listing backend_dots
+
+table
+  thead
+    tr
+      th Map
+      th User
+      th Name
+      th X
+      th Y
+      th
+      th
+      th
+
+  tbody
+    - @backend_dots.each do |backend_dot|
+      tr
+        td = backend_dot.map_id
+        td = backend_dot.user_id
+        td = backend_dot.name
+        td = backend_dot.x
+        td = backend_dot.y
+        td = link_to 'Show', backend_dot
+        td = link_to 'Edit', edit_backend_dot_path(backend_dot)
+        td = link_to 'Destroy', backend_dot, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Dot', new_backend_dot_path

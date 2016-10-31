@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
     resources :maps do
       resources :upload_maps, only: [:new, :create]
+      resources :dots
     end
   end
 
