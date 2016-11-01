@@ -2,15 +2,9 @@ nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
   a.navbar-brand href="/"  Map Merge
 
   ul.nav.navbar-nav
-    li.nav-item.active
-      a.nav-link href="/"
-        | 首頁
-        span.sr-only (current)
+    = nav_link '首頁', root_path
     - if current_user
-      li.nav-item
-        a.nav-link href="/admin"
-          | 後台
-          span.sr-only (current)
+      = nav_link '後台', '/admin'
 
   ul.nav.navbar-nav.float-xs-right
     - unless current_user
