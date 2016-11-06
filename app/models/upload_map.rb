@@ -27,7 +27,9 @@ class UploadMap < ApplicationRecord
 
   def import_dots
     hash = Hash.from_xml File.read(self.file_path)
-    grub_dots(hash['kml']['Document']['Folder']['Placemark']).compact.each do |dot|
+    folder = hash['kml']['Document']['Folder']
+    return if folder['Placemark'].blank?
+    grub_dots(folder['Placemark']).compact.each do |dot|
       points = dot['Point']['coordinates'].strip.split(',')[0..1]
       self.map.dots.create(
         x: points[0],
