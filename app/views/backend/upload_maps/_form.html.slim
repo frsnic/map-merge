@@ -6,7 +6,7 @@
         - @upload_map.errors.full_messages.each do |message|
           li = message
 
-  .field   = f.input :map_id,  as: :hidden
-  .field   = f.input :user_id, as: :hidden
-  .field   = f.input :file,    as: :file
+  .field = f.input :map_id,  as: :hidden
+  .field = f.input :user_id, as: :hidden
+  .field = f.input :file,    as: :file,   label: false, input_html: { accept: %w(.kml .csv).join(',') }
   .actions = f.submit "上傳"
