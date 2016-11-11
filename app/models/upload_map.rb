@@ -9,6 +9,8 @@ class UploadMap < ApplicationRecord
 
   belongs_to :user
 
+  has_many :dots
+
   # validations ...............................................................
   validates_presence_of :file, :map_id, :user_id
 
@@ -26,20 +28,11 @@ class UploadMap < ApplicationRecord
   end
 
   def import_dots
-    hash = Hash.from_xml File.read(self.file_path)
-    folder = hash['kml']['Document']['Folder']
-    return if folder['Placemark'].blank?
-    grub_dots(folder['Placemark']).compact.each do |dot|
-      points = dot['Point']['coordinates'].strip.split(',')[0..1]
-      self.map.dots.create(
-        x: points[0],
-        y: points[1],
-        name: dot['name'],
-        user_id: self.user_id,
-        created_at: dot['TimeStamp']['when'],
-        updated_at: dot['TimeStamp']['when']
-      )
+    case self.content_type
+    when 'application/octet-stream' # KML
+      dots = kml_import
     end
+    dots.each { |dot| self.dots.create dot.merge(user_id: self.user_id, map_id: self.map_id) }
   end
 
   # protected instance methods ................................................
@@ -63,4 +56,14 @@ class UploadMap < ApplicationRecord
       end
     end
 
+    def kml_import
+      hash = Hash.from_xml File.read(self.file_path)
+      folder = hash['kml']['Document']['Folder']
+      return [] if folder['Placemark'].blank?
+      grub_dots(folder['Placemark']).compact.map do |dot|
+        points  = dot['Point']['coordinates'].strip.split(',')[0..1]
+        created = dot['TimeStamp']['when']
+        { x: points[0], y: points[1], name: dot['name'], created_at: created }
+      end
+    end
 end

@@ -13,7 +13,9 @@ class Backend::UploadMapsController < Backend::ApplicationController
 
     respond_to do |format|
       if @upload_map.save
-        format.html { redirect_to @map, notice: 'Upload map was successfully created.' }
+        message = "上傳成功，新增了 #{@upload_map.dots.size} 個點"
+        @upload_map.dots.size > 0 ? flash[:notice] = message : flash[:warning] = message
+        format.html { redirect_to @map }
         format.json { render :show, status: :created, location: @upload_map }
       else
         format.html { render :new }
