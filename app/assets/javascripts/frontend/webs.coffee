@@ -24,7 +24,7 @@ copyToClipboard = (text) ->
   return
 
 ready = ->
-  document.querySelector('#copy').onclick = (e) ->
+  $('.copy').click (e) ->
     e.preventDefault()
     result = copyToClipboard $(this).attr('href')
     if result
@@ -33,5 +33,4 @@ ready = ->
       alert('複製失敗')
     return
 
-$(document).ready(ready)
-$(document).on('page:load', ready)
+$(document).on('turbolinks:load', ready)

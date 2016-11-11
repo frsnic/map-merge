@@ -10,17 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031093009) do
+ActiveRecord::Schema.define(version: 20161111042626) do
 
   create_table "dots", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "map_id"
+    t.integer  "upload_map_id"
     t.integer  "user_id"
     t.string   "name"
     t.string   "x"
     t.string   "y"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "desc"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["map_id"], name: "index_dots_on_map_id", using: :btree
+    t.index ["upload_map_id"], name: "index_dots_on_upload_map_id", using: :btree
     t.index ["user_id"], name: "index_dots_on_user_id", using: :btree
   end
 
@@ -34,8 +37,8 @@ ActiveRecord::Schema.define(version: 20161031093009) do
   create_table "upload_maps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "map_id"
     t.integer  "user_id"
-    t.string   "name"
     t.string   "file"
+    t.string   "name"
     t.integer  "size"
     t.string   "content_type"
     t.datetime "created_at",   null: false

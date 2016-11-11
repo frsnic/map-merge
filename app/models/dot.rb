@@ -7,6 +7,8 @@ class Dot < ApplicationRecord
 
   belongs_to :user
 
+  belongs_to :upload_map
+
   # validations ...............................................................
   validates_presence_of :user_id, :map_id, :x, :y
 

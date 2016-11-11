@@ -5,9 +5,11 @@ p
   strong User:
   = @map.user_id
 
-ul
-  - @map.dots.each do |dot|
-    li = "#{dot.name} (#{dot.x}, #{dot.y})"
+ul.dot-list
+  - @map.dots.reverse.each_with_index do |dot, index|
+    = content_tag :li, "#{dot.name} (#{dot.x}, #{dot.y})", style: index > 9 ? 'display: none;' : ''
+
+.btn.btn-primary.more 顯示全部
 
 .actions.top-buffer
   hr
