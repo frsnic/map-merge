@@ -7,5 +7,4 @@ ready = ->
      $('.dot-list li').show()
      $('.btn.more').hide()
 
-$(document).ready(ready)
-$(document).on('page:load', ready)
+$(document).on('turbolinks:load', ready)

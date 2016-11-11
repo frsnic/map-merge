@@ -12,7 +12,7 @@ html
     #wrap
       = render 'layouts/nav'
 
-      .container
+      .container.bottom-buffer
         = content_tag(:div, flash[:notice].html_safe,  class: "alert alert-info")    if flash[:notice].present?
         = content_tag(:div, flash[:success].html_safe, class: "alert alert-success") if flash[:success].present?
         = content_tag(:div, flash[:warning].html_safe, class: "alert alert-warning") if flash[:warning].present?
@@ -22,6 +22,6 @@ html
 
       #push
 
-    #footer.top-buffer
+    #footer
       .container
         .credit Copyright © 2016 frsnic.
